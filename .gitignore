@@ -1,0 +1,22 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 打包产物
+*.tgz
+dist/
+
+# 运行时产物(插件跑起来后才会有)
+*.log
+dsh-done-badge.json
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 临时文件
+*.tmp
+test/.tmp/
