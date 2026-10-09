@@ -105,6 +105,28 @@ dsh plugin --profile desktop add link:/path/to/dsh-done-stage
 > DSH 会起不来并弹一个「禁用第三方插件、备份 profile patch 并重启」的崩溃框 —— 那个操作会把
 > `dsh.profile.bundles` 清到只剩基础包,需要你手工把插件列表补回去。本插件已经用回归测试把这条钉死了。
 
+### 方式 D:让对方的 DSH 自己装(复制粘贴,最省事)
+
+不想自己动手的人,可以把下面整段**直接发给他的 DSH 聊天框**,DSH 会自己把上面 A/B/C 的活干完:
+
+````text
+帮我装一个 DSH 插件(任务完成时任务栏红色数字角标 + Windows 右下角通知):
+https://github.com/3262253821/dsh-done-stage
+
+请按这个流程做:
+1. git clone 到一个路径里没有空格的本地目录(如果不想用 git,去仓库页点 Code → Download ZIP 解压也行);
+2. 改 %USERPROFILE%\.dsh\profiles\desktop\package.json(改之前先备份这个文件):
+   - dependencies 里加一行  "dsh-done-badge": "link:<克隆/解压到的路径,用正斜杠>"
+   - dsh.profile.bundles 数组里加一项  "dsh-done-badge"
+3. 到该 profile 目录( %USERPROFILE%\.dsh\profiles\desktop )跑一次 pnpm install;
+4. 告诉我重启 DSH 桌面端(插件只在启动时随 bundle 列表加载,不重启不生效)。
+
+装好之后,我应该在 设置 → 弹窗角标通知 里看到「任务栏角标」和「Windows 通知」两个开关。
+注意:任务栏角标和系统通知是 Windows 专有功能,非 Windows 只会有窗口内右上角的红色数字角标。
+````
+
+对方重启后,只要 **设置** 左导航里多出一页 **弹窗角标通知**,就说明装好了(点进去用「发送测试通知」当场验证)。
+
 ## 设置界面「弹窗角标通知」
 
 插件在**设置左导航**里加了一页 **弹窗角标通知**(和其它插件页并列),点进去是两个开关:
